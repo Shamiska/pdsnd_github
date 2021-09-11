@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[83]:
+# In[83]:Import relevant packages
 
 
 import time
@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 
-# In[84]:
+# In[84]: Create dictionaries and lists
 
 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -20,7 +20,7 @@ cities = ['chicago', 'washington', 'new york city']
 
 months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
 
-day_of_week = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] 
+day_of_week = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
 
 # In[85]:
@@ -36,10 +36,10 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-    
+
         city = input('\nWhat city would you like to explore? ').lower()
 
         if city in cities:
@@ -47,10 +47,10 @@ def get_filters():
             break
         else:
             print('Please enter a valid city response')
-    
+
     # get user input for month (all, january, february, ... , june)
     while True:
-    
+
         month = input('\nWhat month would you like to explore? ').lower()
 
         if month in months:
@@ -58,10 +58,10 @@ def get_filters():
             break
         else:
             print('Please enter a valid month response')
-         
+
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-    
+
         day = input('\nWhat day would you like to explore? ').lower()
 
         if day in day_of_week:
@@ -69,9 +69,9 @@ def get_filters():
             break
         else:
             print('Please enter a valid day response')
-            
+
     print('-'*40)
-    return city, month, day 
+    return city, month, day
 
 
 # In[86]:
@@ -147,7 +147,7 @@ def station_stats(df):
 
     # display most frequent combination of start station and end station trip
     df['Common_station'] = df['Start Station'] + ' to ' + df['End Station']
-    
+
     print('Most frequent combination station is', df['Common_station'].mode()[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -159,8 +159,8 @@ def station_stats(df):
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
-    
-           
+
+
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
@@ -216,7 +216,7 @@ def display_raw_data(df):
     pd.set_option('max_rows',400)
     df = df.reset_index(drop = False)
     row_index = 0
-    while True:   
+    while True:
 
         raw_data = str(input("Would you like to see the first 5 lines of the raw data?"))
         if raw_data.lower() != 'yes':
@@ -224,7 +224,7 @@ def display_raw_data(df):
         else:
             print(df[row_index: row_index + 5])
             row_index += 5
-            
+
 
 
 # In[92]:
@@ -248,4 +248,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
