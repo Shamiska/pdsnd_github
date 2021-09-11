@@ -23,7 +23,8 @@ months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
 day_of_week = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
 
-# In[85]:
+# In[85]: Write a function to get user input for city, month and day and
+# prompt for a valid response if anything else is entered.
 
 
 def get_filters():
