@@ -86,6 +86,7 @@ def load_data(city, month, day):
 
     return df
 
+# Most frequent times of travel
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -130,8 +131,6 @@ def station_stats(df):
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
-
-
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
@@ -145,7 +144,6 @@ def trip_duration_stats(df):
 
     # display mean travel time
     print('Mean travel time is ', df['Trip Duration'].mean())
-
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -175,6 +173,7 @@ def user_stats(df, city):
     print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+# Asks the user if they want to see the raw data 5 lines at a time
 def display_raw_data(df):
     pd.set_option('max_rows',400)
     df = df.reset_index(drop = False)
