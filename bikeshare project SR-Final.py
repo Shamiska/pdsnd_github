@@ -1,16 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[83]:
-
-
 import time
 import pandas as pd
 import numpy as np
-
-
-# In[84]:
-
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -20,12 +10,9 @@ cities = ['chicago', 'washington', 'new york city']
 
 months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
 
-day_of_week = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] 
+day_of_week = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
-
-# In[85]:
-
-
+#Asks the user for input and filters by day, month or over all months
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -36,10 +23,10 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+
+# get user input for city (chicago, new york city, washington)
     while True:
-    
+
         city = input('\nWhat city would you like to explore? ').lower()
 
         if city in cities:
@@ -47,10 +34,10 @@ def get_filters():
             break
         else:
             print('Please enter a valid city response')
-    
+
     # get user input for month (all, january, february, ... , june)
     while True:
-    
+
         month = input('\nWhat month would you like to explore? ').lower()
 
         if month in months:
@@ -58,10 +45,10 @@ def get_filters():
             break
         else:
             print('Please enter a valid month response')
-         
+
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-    
+
         day = input('\nWhat day would you like to explore? ').lower()
 
         if day in day_of_week:
@@ -69,13 +56,9 @@ def get_filters():
             break
         else:
             print('Please enter a valid day response')
-            
+
     print('-'*40)
-    return city, month, day 
-
-
-# In[86]:
-
+    return city, month, day
 
 # Generate the DataFrame
 def load_data(city, month, day):
@@ -103,10 +86,6 @@ def load_data(city, month, day):
 
     return df
 
-
-# In[87]:
-
-
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -128,10 +107,6 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
-# In[88]:
-
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -147,20 +122,16 @@ def station_stats(df):
 
     # display most frequent combination of start station and end station trip
     df['Common_station'] = df['Start Station'] + ' to ' + df['End Station']
-    
+
     print('Most frequent combination station is', df['Common_station'].mode()[0])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
-# In[89]:
-
-
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
-    
-           
+
+
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
@@ -178,10 +149,6 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
-
-# In[90]:
-
 
 def user_stats(df, city):
     """Displays statistics on bikeshare users."""
@@ -208,15 +175,11 @@ def user_stats(df, city):
     print("This took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
-# In[91]:
-
-
 def display_raw_data(df):
     pd.set_option('max_rows',400)
     df = df.reset_index(drop = False)
     row_index = 0
-    while True:   
+    while True:
 
         raw_data = str(input("Would you like to see the first 5 lines of the raw data?"))
         if raw_data.lower() != 'yes':
@@ -224,11 +187,6 @@ def display_raw_data(df):
         else:
             print(df[row_index: row_index + 5])
             row_index += 5
-            
-
-
-# In[92]:
-
 
 def main():
     while True:
@@ -245,7 +203,5 @@ def main():
         if restart.lower() != 'yes':
             break
 
-
 if __name__ == "__main__":
 	main()
-
